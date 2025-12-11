@@ -24,7 +24,7 @@ const Sidebar: React.FC<{ isOpen: boolean; onClose: () => void; onNavigateReport
         }`}
       >
         {/* Drawer Header */}
-        <div className="bg-[#3b82f6] p-6 text-white pt-12 relative shrink-0">
+        <div className="bg-[#4c9eeb] p-6 text-white pt-12 relative shrink-0">
           <button 
             onClick={onClose}
             className="absolute top-4 right-4 text-white/80 hover:text-white"
@@ -108,44 +108,46 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavigateReport }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex flex-col h-full bg-white relative">
+    <div className="flex flex-col h-full bg-gray-50 relative">
       <Sidebar 
         isOpen={isSidebarOpen} 
         onClose={() => setSidebarOpen(false)} 
         onNavigateReport={onNavigateReport}
       />
 
-      {/* Header */}
-      <div className="bg-[#3b82f6] text-white p-4 pb-8 rounded-b-[2rem] shadow-lg">
-        <div className="flex items-center gap-3 mb-4">
+      {/* Top White Header Bar */}
+      <div className="bg-white p-3 px-4 flex items-center justify-between sticky top-0 z-30">
+        <div className="flex items-center gap-3">
           <button 
             onClick={() => setSidebarOpen(true)}
-            className="p-1 -ml-1 hover:bg-white/10 rounded-full transition-colors"
+            className="p-1 -ml-1 hover:bg-gray-100 rounded-full transition-colors"
           >
-            <Menu className="w-6 h-6" />
+            <Menu className="w-7 h-7 text-gray-600" />
           </button>
-          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm p-1 overflow-hidden">
+          <div className="w-8 h-8 flex items-center justify-center">
              <img src="https://play-lh.googleusercontent.com/8ff6EcyK9ep1af8ETdKQAZFs2JVnoiRugwY3GU4Sjhpp5o0zSo-jxslGIogFUrboCw=w480-h960-rw" alt="iCloudEMS" className="w-full h-full object-contain" />
           </div>
         </div>
-        <h1 className="text-2xl font-bold">Welcome, Bhuvaneshwar</h1>
       </div>
 
-      {/* Search Bar Container */}
-      <div className="px-4 -mt-6">
-        <div className="bg-white rounded-lg shadow-md p-3 flex items-center">
-          <Search className="w-5 h-5 text-gray-400 mr-2" />
+      {/* Blue Box - Rectangular (no radius) */}
+      <div className="bg-[#4c9eeb] px-5 pt-4 pb-20">
+        <h1 className="text-2xl font-bold leading-tight text-white mb-5">Welcome, Bhuvaneshwar</h1>
+        
+        {/* Search Bar inside Blue Box */}
+        <div className="bg-white rounded-xl shadow-sm p-3.5 flex items-center">
+          <Search className="w-5 h-5 text-gray-400 mr-3" />
           <input 
             type="text" 
             placeholder="Search Frequently Used" 
-            className="w-full outline-none text-gray-600 text-sm placeholder:text-gray-400"
+            className="w-full outline-none text-gray-700 text-sm placeholder:text-gray-400 font-medium"
           />
         </div>
       </div>
 
-      {/* Grid Content */}
-      <div className="flex-1 overflow-y-auto p-4">
-        <h2 className="text-lg font-semibold mb-4 text-gray-800">Frequently Used</h2>
+      {/* Overlapping Content Section */}
+      <div className="flex-1 bg-white mx-4 -mt-12 px-4 py-6 relative z-10 overflow-y-auto shadow-md mb-4 rounded-[6px]">
+        <h2 className="text-lg font-bold mb-5 text-gray-800 ml-1">Frequently Used</h2>
         <div className="grid grid-cols-4 gap-y-6 gap-x-2">
           {DASHBOARD_ITEMS.map((item) => (
             <div 
@@ -154,11 +156,11 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavigateReport }) => {
               onClick={item.action ? onNavigateReport : undefined}
             >
               <div 
-                className={`w-12 h-12 rounded-full ${item.bg} flex items-center justify-center mb-2 ${item.action ? 'cursor-pointer active:scale-95 transition-transform shadow-sm ring-2 ring-blue-100 group-hover:ring-blue-200' : 'opacity-80'}`}
+                className={`w-[3.25rem] h-[3.25rem] rounded-full ${item.bg} flex items-center justify-center mb-2.5 ${item.action ? 'cursor-pointer active:scale-95 transition-transform shadow-sm ring-2 ring-blue-50 group-hover:ring-blue-200' : ''}`}
               >
-                <item.icon className={`w-5 h-5 ${item.color}`} strokeWidth={2.5} />
+                <item.icon className={`w-6 h-6 ${item.color}`} />
               </div>
-              <span className="text-[10px] text-center text-gray-700 font-medium leading-tight px-1 group-hover:text-blue-600 transition-colors">
+              <span className="text-[10px] text-center text-gray-700 font-semibold leading-tight px-0.5 tracking-tight group-hover:text-blue-600 transition-colors">
                 {item.label}
               </span>
             </div>

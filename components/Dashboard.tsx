@@ -21,16 +21,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavigateReport }) => {
       </div>
 
       {/* Search Bar Container */}
-      <div className="px-4 -mt-6">
-        <div className="bg-white rounded-lg shadow-md p-3 flex items-center">
-          <Search className="w-5 h-5 text-gray-400 mr-2" />
-          <input 
-            type="text" 
-            placeholder="Search Frequently Used" 
-            className="w-full outline-none text-gray-600 text-sm"
-          />
-        </div>
-      </div>
+      
 
       {/* Grid Content */}
       <div className="flex-1 overflow-y-auto p-4">

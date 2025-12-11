@@ -21,10 +21,10 @@ function App() {
         return (
           <ReportForm 
             onBack={() => navigateTo(Screen.DASHBOARD)} 
-            onSubmit={() => navigateTo(Screen.REPORT_RESULT)} 
           />
         );
       case Screen.REPORT_RESULT:
+        // Keeping this case valid for now, though unused by normal flow
         return <ReportResult onBack={() => navigateTo(Screen.REPORT_FORM)} />;
       default:
         return <Dashboard onNavigateReport={() => navigateTo(Screen.REPORT_FORM)} />;
