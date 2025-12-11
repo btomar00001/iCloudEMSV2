@@ -1,5 +1,7 @@
 {
   "name": "iCloudEMS V2",
   "description": "A mobile-first web application replicating the iCloudEMS V2 Report Card module with dashboard, entry form, and detailed performance visualization.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [
+    "camera"
+  ]
 }
